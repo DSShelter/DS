@@ -1,1 +1,89 @@
-window.addEventListener("load",function(){let t=document.querySelector("header"),e=document.querySelector(".navbar"),a=document.querySelector(".menu_burger"),s=document.querySelector(".menu_list"),n=document.querySelector(".contacts"),i=document.querySelector(".contacts_list");function r(){s.classList.add("menu_list_active"),s.animate([{transform:"translateX(-200%)"},{transform:"translateX(0%)"}],{duration:300})}function c(){i.classList.add("contacts_list_active"),i.animate([{transform:"translateX(200%)"},{transform:"translateX(0%)"}],{duration:300})}document.addEventListener("scroll",function(){170<window.pageYOffset?(t.classList.add("darkTheme","header_fixed"),e.classList.add("darkTheme")):(t.classList.remove("darkTheme","header_fixed"),e.classList.remove("darkTheme"))}),a.addEventListener("click",function(){if(s.classList.contains("menu_list_active")){let t=s.animate([{transform:"translateX(0%)"},{transform:"translateX(-200%)"}],{duration:300});t.addEventListener("finish",function(){s.classList.remove("menu_list_active")})}else if(i.classList.contains("contacts_list_active")){let t=i.animate([{transform:"translateX(0%)"},{transform:"translateX(200%)"}],{duration:200});t.addEventListener("finish",function(){i.classList.remove("contacts_list_active"),r()})}else r()}),n.addEventListener("click",function(){if(i.classList.contains("contacts_list_active")){let t=i.animate([{transform:"translateX(0%)"},{transform:"translateX(200%)"}],{duration:200});t.addEventListener("finish",function(){i.classList.remove("contacts_list_active")})}else if(s.classList.contains("menu_list_active")){document.querySelector(".ham").classList.remove("active");let t=s.animate([{transform:"translateX(0%)"},{transform:"translateX(-200%)"}],{duration:200});t.addEventListener("finish",function(){s.classList.remove("menu_list_active"),c()})}else c()})});
+window.addEventListener('load', function(){
+    let header = document.querySelector('header');
+    let navbar = document.querySelector('.navbar');
+    let menu = document.querySelector('.menu_burger');
+    let menu_smScreen = document.querySelector('.menu_list');
+    let contacts = document.querySelector('.contacts');
+    let contacts_list = document.querySelector('.contacts_list');
+
+    /* Трансформация меню при скролле */
+    document.addEventListener('scroll', function () {
+        // console.log (window.pageYOffset);
+        if (window.pageYOffset > 170) {
+            header.classList.add('darkTheme', 'header_fixed');
+            navbar.classList.add('darkTheme');
+        } else {
+            header.classList.remove('darkTheme', 'header_fixed');
+            navbar.classList.remove('darkTheme');
+        }
+    });
+
+    /* Анимация меню */
+    menu.addEventListener('click', function () { 
+        if (menu_smScreen.classList.contains('menu_list_active')) {
+            let animate = menu_smScreen.animate([
+                {transform: 'translateX(0%)'},
+                {transform: 'translateX(-200%)'}
+            ], {duration: 300});
+            animate.addEventListener('finish', function(){
+                menu_smScreen.classList.remove('menu_list_active');
+            });
+        } else {
+            if (contacts_list.classList.contains('contacts_list_active')) {
+                let animate = contacts_list.animate([
+                    {transform: 'translateX(0%)'},
+                    {transform: 'translateX(200%)'},
+                ], {duration: 200});
+                animate.addEventListener('finish', function () {
+                    contacts_list.classList.remove('contacts_list_active');
+                    callMenu();
+                });
+            } else {
+                callMenu();
+            }
+        }
+    });
+
+    /* Анимация контактов */
+    contacts.addEventListener('click', function () {
+        if (contacts_list.classList.contains('contacts_list_active')) {
+            let animate = contacts_list.animate([
+                {transform: 'translateX(0%)'},
+                {transform: 'translateX(200%)'},
+            ], {duration: 200});
+            animate.addEventListener('finish', function(){
+                contacts_list.classList.remove('contacts_list_active');
+            });
+        } else {
+            if (menu_smScreen.classList.contains('menu_list_active')) {
+                document.querySelector('.ham').classList.remove('active');
+                let animate = menu_smScreen.animate([
+                    {transform: 'translateX(0%)'},
+                    {transform: 'translateX(-200%)'},
+                ], {duration: 200});
+                animate.addEventListener('finish', function () {
+                    menu_smScreen.classList.remove('menu_list_active');
+                    callContacts();
+                });
+            } else {
+                callContacts();
+            }
+        }
+    });
+
+    /* Функции управления анимацией */
+    function callMenu() {
+        menu_smScreen.classList.add('menu_list_active');
+        menu_smScreen.animate([
+            {transform: 'translateX(-200%)'},
+            {transform: 'translateX(0%)'}
+        ], {duration: 300});
+    }
+    function callContacts() {
+        contacts_list.classList.add('contacts_list_active');
+        contacts_list.animate([
+            {transform: 'translateX(200%)'},
+            {transform: 'translateX(0%)'}
+        ], {duration: 300});
+    }
+});

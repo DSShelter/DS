@@ -1,44 +1,70 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="Операция Возмездие - это бесплатный текстовый квест, сделанный по мотивам игры Fallout. В игре описываются события нескольких дней 2155 года вселенной Fallout. В центре сюжета война Братства Стали и рейдеров из клана Гадюк.">
-    <meta name = "keywords" content = "Fallout, Operation Revenge, Операция Возмездие, Возмездие, Fallout Quest, text quest, текстовый квест">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Операция Возмездие - это бесплатный текстовый квест, сделанный по мотивам игры Fallout. В игре описываются события нескольких дней 2155 года вселенной Fallout. В центре сюжета война Братства Стали и рейдеров из клана Гадюк."
+    />
+    <meta
+      name="keywords"
+      content="Fallout, Operation Revenge, Операция Возмездие, Возмездие, Fallout Quest, text quest, текстовый квест"
+    />
     <title>Operation Revenge</title>
-    <link rel="shortcut icon" href="img/revenge/favicon.ico" type="image/png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/revenge_master.css?ver=1">
-</head>
-<body class="revenge_body">
+    <link rel="shortcut icon" href="img/revenge/favicon.ico" type="image/png" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/revenge_master.css?ver=1" />
+  </head>
+  <body class="revenge_body">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="greet_q_text">
-                    <p class="greet_text"></p>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="hero_name text-center">
-                    <input type="text" placeholder="Введите имя героя" maxlength="21" id="hName">
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="greet_buttons text-center">
-                    <img id="key_new" src="img/revenge/blank.gif"/>
-                    <img id="key_load_new" src="img/revenge/blank.gif"/>
-                    <img id="key_quit_new" src="img/revenge/blank.gif"/>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="greet_q_text">
+            <p class="greet_text"></p>
+          </div>
         </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="hero_name text-center">
+            <input
+              type="text"
+              placeholder="Введите имя героя"
+              maxlength="21"
+              id="hName"
+            />
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="greet_buttons text-center">
+            <img id="key_new" src="img/revenge/blank.gif" />
+            <img id="key_load_new" src="img/revenge/blank.gif" />
+            <img id="key_quit_new" src="img/revenge/blank.gif" />
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Подключение jQuery -->
     <script src="js/jquery-3.4.1.min.js"></script>
-        <!-- Подключение Bootstrap 4 -->
+    <!-- Подключение Bootstrap 4 -->
     <script src="js/bootstrap.min.js"></script>
 
-        <!-- Подключение файла игры -->
-    <script src="js/master.js"></script>
-</body>
+    <!-- Общие скрипты -->
+    <script src="js/swup.min.js"></script>
+
+    <!-- Подключение файла игры -->
+    <script src="game/revenge/engine.js"></script>
+    <script src="game/revenge/prologue.js"></script>
+    <script src="game/revenge/wasteland.js"></script>
+    <script src="game/revenge/hub.js"></script>
+    <script src="game/revenge/wasteland_2.js"></script>
+    <script src="game/revenge/vipers.js"></script>
+    <script src="game/revenge/final.js"></script>
+    <script src="game/revenge/endgame.js"></script>
+    <script src="game/revenge/epilogue.js"></script>
+    <script src="game/revenge/main.js"></script>
+  </body>
 </html>
