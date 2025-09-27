@@ -1,1 +1,37 @@
-body{background:url(../img/site/me_dark.jpg) center center no-repeat fixed #000;color:#fff}footer{border-top:none}a{color:#fff}a:after{background-color:#fff!important}.navbar{border-top:1px solid #fff}.navbar .navbar__item .contacts_btn:after{background-color:#fff!important}.line{stroke:#fff}.menu_list{background-color:transparent}.menu_list ul li{border-top:1px solid #fff}.menu_list ul li:last-child{border-bottom:1px solid #fff}@media all and (orientation:portrait) and (min-width:600px){body{background:url(../img/site/me_dark_2.jpg) center center no-repeat fixed}}
+body {
+  background: url(../img/site/me_dark.jpg) center center no-repeat fixed;
+  background-color: #000;
+  color: #fff;
+}
+footer {
+  border-top: none;
+}
+a {
+  color: #fff;
+}
+a:after {
+  background-color: #fff !important;
+}
+.navbar {
+  border-top: 1px solid #fff;
+}
+.navbar .navbar__item .contacts_btn:after {
+  background-color: #fff !important;
+}
+.line {
+  stroke: #fff;
+}
+.menu_list {
+  background-color: transparent;
+}
+.menu_list ul li {
+  border-top: 1px solid #fff;
+}
+.menu_list ul li:last-child {
+  border-bottom: 1px solid #fff;
+}
+@media all and (orientation: portrait) and (min-width: 600px) {
+  body {
+    background: url(../img/site/me_dark_2.jpg) center center no-repeat fixed;
+  }
+}
