@@ -294,8 +294,8 @@ $(document).on("click", "#key_load_new", function () {
   cookieDataGet = localStorage.getItem("savegame")
   newCookieData = JSON.parse(cookieDataGet)
 
-  heroName = decodeURIComponent(newCookieData.cheroName || "")
-  rank = decodeURIComponent(newCookieData.crank || "")
+  heroName = sanitizeName(newCookieData.cheroName)
+  rank = newCookieData.crank
   day = newCookieData.cday
   time = newCookieData.ctime
   daytime = newCookieData.cdaytime
@@ -495,8 +495,8 @@ $(document).on("click", "#key_load", function () {
   cookieDataGet = localStorage.getItem("savegame")
   newCookieData = JSON.parse(cookieDataGet)
 
-  heroName = decodeURIComponent(newCookieData.cheroName || "")
-  rank = decodeURIComponent(newCookieData.crank || "")
+  heroName = sanitizeName(heroName)
+  rank = newCookieData.crank
   day = newCookieData.cday
   time = newCookieData.ctime
   daytime = newCookieData.cdaytime
@@ -674,6 +674,19 @@ $(document).on("click", "#key_load", function () {
   $("#saveload_status_text").fadeOut(5000)
 })
 
+// Безопасность: удаляем все HTML-теги
+function sanitizeName(name) {
+  if (typeof name !== "string") return "Безымянный"
+  // убираем HTML-теги
+  let clean = name.replace(/<\/?[^>]+(>|$)/g, "")
+  // убираем JS-события и подозрительные атрибуты
+  clean = clean.replace(/on\w+="[^"]*"/gi, "")
+  clean = clean.replace(/javascript:/gi, "")
+  // обрезаем слишком длинные строки
+  clean = clean.trim().slice(0, 50)
+  return clean || "Безымянный"
+}
+
 // Тестирование: перезапуск
 function restart() {
   change_image("img/revenge/restart.jpg")
@@ -764,25 +777,27 @@ function change_name(new_rank, name) {
   // Сбрасываем скролл
   $(".q_monitor_states").scrollTop(0)
 
-  // Удаляем старые элементы
+  // Чистим блок
   $("#name").empty()
 
-  // Создаем безопасные элементы и вставляем текст через .text()
+  // Создаём элементы безопасно
   var $rankSpan = $("<span>").addClass("underlined").text(rank)
   var $space = $("<span>").text(" ")
   var $heroSpan = $("<span>").addClass("heroNameColor").text(heroName)
 
+  // Собираем контейнер
   var $container = $("<span>")
     .append($rankSpan)
     .append($space)
     .append($heroSpan)
 
+  // Добавляем в DOM
   $("#name").append($container)
   $container.hide().fadeIn(200)
 
-  // Сохраняем куки безопасно — кодируем значение
-  setCookie("crank", encodeURIComponent(rank))
-  setCookie("cheroName", encodeURIComponent(heroName))
+  // Сохраняем куки
+  setCookie("crank", rank)
+  setCookie("cheroName", heroName)
 }
 
 // Здоровье
