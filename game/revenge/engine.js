@@ -282,7 +282,7 @@ $(document).on("click", "#key_load_new", function () {
   /* Контейнер эрана игры */
   $(".container").empty()
   var newLayout = $(
-    '<div class="row"><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 order-lg-1 order-md-3 order-sm-3 order-xs-3"><div class="q_text"><p class="text"></p></div></div><div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-first q_pic"><div class="q_pic_image" id="pic"><img id="main_pic" src=""></div></div><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 order-lg-3 order-md-4 order-sm-4 order-xs-4"><div class="q_keys" id="option_btn"><div class="keys_btn"><button class="btn"></button></div></div></div><div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 order-lg-4 order-md-2 order-sm-2 order-xs-2 order-first q_monitor"><div class="q_monitor_states"><p id="time"><span></span></p><p id="name"><span></span></p><p id="health"><span></span></p><p id="status"><span></span></p><p id="satiety"><span></span></p><p id="drunkenness"><span></span></p><p><span class="underlined">У Вас есть:</span></p><p id="caps"><span></span></p><p id="shotgun"><span></span></p><p id="gun"><span></span></p><p id="grenade"><span></span></p><p id="stimpack"><span></span></p><p id="antidote"><span></span></p><p id="holodisk"><span></span></p><p id="beer"><span></span></p><p id="booze"><span></span></p><p id="version"><span>Версия игры: 2.0</span></p></div></div></div><div class="row keys_slq"><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 order-lg-1 order-md-2 order-sm-2 order-xs-2"><div class="save_load_quit_buttons text-center"><img id="key_save" src="img/revenge/blank.gif"/><img id="key_load" src="img/revenge/blank.gif"/><img id="key_quit" src="img/revenge/blank.gif"/></div></div><div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-first save_load_screen text-center"><div class="saveload_status"><p id="saveload_status_text"></p></div></div></div><div class="row"><div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12"><div class="volume volume_off text-center"><img id="vol_btn" src="img/revenge/vol_off.png"></div></div><div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div><div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div></div>'
+    '<div class="row"><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 order-lg-1 order-md-3 order-sm-3 order-xs-3"><div class="q_text"><p class="text"></p></div></div><div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-first q_pic"><div class="q_pic_image" id="pic"><img id="main_pic" src=""></div></div><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 order-lg-3 order-md-4 order-sm-4 order-xs-4"><div class="q_keys" id="option_btn"><div class="keys_btn"><button class="btn"></button></div></div></div><div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 order-lg-4 order-md-2 order-sm-2 order-xs-2 order-first q_monitor"><div class="q_monitor_states"><p id="time"><span></span></p><p id="name"><span></span></p><p id="health"><span></span></p><p id="status"><span></span></p><p id="satiety"><span></span></p><p id="drunkenness"><span></span></p><p><span class="underlined">У Вас есть:</span></p><p id="caps"><span></span></p><p id="shotgun"><span></span></p><p id="gun"><span></span></p><p id="grenade"><span></span></p><p id="stimpack"><span></span></p><p id="antidote"><span></span></p><p id="holodisk"><span></span></p><p id="beer"><span></span></p><p id="booze"><span></span></p><p id="version"><span>Версия игры: 2.1</span></p></div></div></div><div class="row keys_slq"><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 order-lg-1 order-md-2 order-sm-2 order-xs-2"><div class="save_load_quit_buttons text-center"><img id="key_save" src="img/revenge/blank.gif"/><img id="key_load" src="img/revenge/blank.gif"/><img id="key_quit" src="img/revenge/blank.gif"/></div></div><div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 order-lg-2 order-md-1 order-sm-1 order-xs-1 order-first save_load_screen text-center"><div class="saveload_status"><p id="saveload_status_text"></p></div></div></div><div class="row"><div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div><div class="col-lg-8 col-md-12 col-sm-12 col-xs-12"><div class="volume volume_off text-center"><img id="vol_btn" src="img/revenge/vol_off.png"></div></div><div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div><div class="col-lg-3 col-md-12 col-sm-12 col-xs-12"></div></div>'
   )
   $(".container").append(newLayout)
   /* Возврат функции из Local Store */
@@ -294,8 +294,8 @@ $(document).on("click", "#key_load_new", function () {
   cookieDataGet = localStorage.getItem("savegame")
   newCookieData = JSON.parse(cookieDataGet)
 
-  heroName = newCookieData.cheroName
-  rank = newCookieData.crank
+  heroName = decodeURIComponent(newCookieData.cheroName || "")
+  rank = decodeURIComponent(newCookieData.crank || "")
   day = newCookieData.cday
   time = newCookieData.ctime
   daytime = newCookieData.cdaytime
@@ -495,8 +495,8 @@ $(document).on("click", "#key_load", function () {
   cookieDataGet = localStorage.getItem("savegame")
   newCookieData = JSON.parse(cookieDataGet)
 
-  heroName = newCookieData.cheroName
-  rank = newCookieData.crank
+  heroName = decodeURIComponent(newCookieData.cheroName || "")
+  rank = decodeURIComponent(newCookieData.crank || "")
   day = newCookieData.cday
   time = newCookieData.ctime
   daytime = newCookieData.cdaytime
